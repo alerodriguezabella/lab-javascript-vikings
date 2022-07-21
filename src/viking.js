@@ -55,13 +55,46 @@ class War{
         this.saxonArmy.push(Saxon)
     }
     vikingAttack(){
-        // this.Saxon.receiveDamage() = Viking.strength
-        this.Saxon.receiveDamage() = this.Viking.strength
+        // const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+        // const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
+        // const message = this.saxonArmy[saxonIndex].receiveDamage(this.vikingArmy[vikingIndex].strength)
+        // if(this.saxonArmy[saxonIndex].health <= 0){
+        //     this.saxonArmy.splice(saxonIndex, 1)
+        // }
+        // return message
+        return this.attack(this.vikingArmy, this.saxonArmy)
+
     }
     saxonAttack(){
-
+        // const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
+        // const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+        // const message = this.vikingArmy[vikingIndex].receiveDamage(this.saxonArmy[saxonIndex].strength)
+        // if(this.vikingArmy[vikingIndex].health <= 0){
+        //     this.vikingArmy.splice(vikingIndex, 1)
+        // }
+        // return message
+        return this.attack(this.saxonArmy, this.vikingArmy)
     }
-    showStatus(){
 
+    // Refactor code
+    attack(attackers, defenders){
+        const attackerIndex = Math.floor(Math.random() * attackers.length)
+        const defenderIndex = Math.floor(Math.random() * defenders.length)
+        const message = defenders[defenderIndex].receiveDamage(attackers[attackerIndex].strength)
+        console.log(message)
+        if(defenders[defenderIndex].health <= 0){
+            defenders.splice(defenderIndex, 1)
+        }
+        return message
+    }
+
+    showStatus(){
+        if(!this.saxonArmy.length){
+            return "Vikings have won the war of the century!"
+        } else if( !this.vikingArmy.length){
+            return "Saxons have fought for their lives and survived another day..."
+        } else {
+            return "Vikings and Saxons are still in the thick of battle."
+        }
     }
 }
